@@ -7,16 +7,16 @@ setuptools.setup(
     description="A simple and powerful text analysis package.",
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type="text/markdown",
-    # url="github url"
+    url="https://github.com/Tanay-Dwivedi/English-pip-Package",
     author="Tanay Dwivedi",
     author_email="tanaydwivedi2002@gmail.com",
     license="MIT",
     license_file="LICENSE",
     readme="README.md",
-    # project_urls = {
-    #     "Documentation": "docs url",
-    #     "Source": "github url"
-    # }
+    project_urls = {
+        "Documentation": "https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/README.md",
+        "Source": "https://github.com/Tanay-Dwivedi/English-pip-Package"
+    },
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
