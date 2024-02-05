@@ -13,9 +13,9 @@ setuptools.setup(
     license="MIT",
     license_file="LICENSE",
     readme="README.md",
-    project_urls = {
+    project_urls={
         "Documentation": "https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/README.md",
-        "Source": "https://github.com/Tanay-Dwivedi/English-pip-Package"
+        "Source": "https://github.com/Tanay-Dwivedi/English-pip-Package",
     },
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -29,9 +29,9 @@ setuptools.setup(
     ],
     python_requires=">= 3.12",
     install_requires=[
-        "numpy",
-        "pandas",
-        "nltk",
+        "spacy",
+        "textblob",
+        "py3langid",
     ],  # {will add the required dependencies or packages}
     packages=setuptools.find_packages(),
     include_package_data=True,
