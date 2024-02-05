@@ -78,3 +78,13 @@ def get_verbs(text):
     doc = nlp(text)
     verbs = [token.text for token in doc if token.pos_ == "VERB"]
     return verbs
+
+
+# Extract numbers from the string
+
+
+def get_numbers(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    numbers = [token.text for token in doc if token.pos_ == "NUM"]
+    return numbers
