@@ -284,3 +284,21 @@ def parse_syntax(text):
         }
         syntax_tree_dict.append(token_info)
     return syntax_tree_dict
+
+
+# Extract part of speech tags from the text
+
+
+def get_POS_tag(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+
+    pos_list = []
+    for token in doc:
+        pos_info = {
+            "word": token.text,
+            "pos": token.pos_,
+        }
+        pos_list.append(pos_info)
+
+    return pos_list
