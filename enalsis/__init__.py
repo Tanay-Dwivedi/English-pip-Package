@@ -52,8 +52,19 @@ def get_nouns(text):
 
 # Extract pronouns from the string
 
+
 def get_pronouns(text):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     pronouns = [token.text for token in doc if token.pos_ == "PRON"]
     return pronouns
+
+
+# Extract proper nouns from the string
+
+
+def get_proper_nouns(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    proper_nouns = [token.text for token in doc if token.pos_ == "PROPN"]
+    return proper_nouns
