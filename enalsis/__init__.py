@@ -265,3 +265,22 @@ def detect_language(text):
         return language_name
     except:
         return "Unable to detect language"
+
+
+# Parse the given text
+
+
+def parse_syntax(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+
+    syntax_tree_dict = []
+    for token in doc:
+        token_info = {
+            "text": token.text,
+            "dep": token.dep_,
+            "pos": token.pos_,
+            "head": token.head.text,
+        }
+        syntax_tree_dict.append(token_info)
+    return syntax_tree_dict
