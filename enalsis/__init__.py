@@ -68,3 +68,13 @@ def get_proper_nouns(text):
     doc = nlp(text)
     proper_nouns = [token.text for token in doc if token.pos_ == "PROPN"]
     return proper_nouns
+
+
+# Extract verbs from the string
+
+
+def get_verbs(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    verbs = [token.text for token in doc if token.pos_ == "VERB"]
+    return verbs
