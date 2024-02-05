@@ -322,3 +322,22 @@ def spell_check_text(text):
     ]
 
     return misspelled_words, corrected_text
+
+
+# find misspelled words and its respective corrected words
+
+
+def find_spell_corrections(text):
+    blob = TextBlob(text)
+
+    corrected_text = str(blob.correct())
+
+    misspelled_dict = {
+        original_word: corrected_word
+        for original_word, corrected_word in zip(
+            blob.words, TextBlob(corrected_text).words
+        )
+        if original_word != corrected_word
+    }
+
+    return misspelled_dict
