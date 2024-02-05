@@ -48,3 +48,12 @@ def get_nouns(text):
     doc = nlp(text)
     nouns = [token.text for token in doc if token.pos_ == "NOUN"]
     return nouns
+
+
+# Extract pronouns from the string
+
+def get_pronouns(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    pronouns = [token.text for token in doc if token.pos_ == "PRON"]
+    return pronouns
