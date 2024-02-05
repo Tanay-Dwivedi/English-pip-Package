@@ -1,5 +1,6 @@
 import spacy
 import langid
+from textblob import TextBlob
 
 # Extract entities from string
 
@@ -302,3 +303,22 @@ def get_POS_tag(text):
         pos_list.append(pos_info)
 
     return pos_list
+
+
+# Extract missspelled words and the corrected text
+
+
+def spell_check_text(text):
+    blob = TextBlob(text)
+
+    corrected_text = str(blob.correct())
+
+    misspelled_words = [
+        original_word
+        for original_word, corrected_word in zip(
+            blob.words, TextBlob(corrected_text).words
+        )
+        if original_word != corrected_word
+    ]
+
+    return misspelled_words, corrected_text
