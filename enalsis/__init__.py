@@ -28,3 +28,11 @@ def get_adjectives(text):
     doc = nlp(text)
     adjectives = [token.text for token in doc if token.pos_ == "ADJ"]
     return adjectives
+
+# Extract adverbs from the string
+
+def get_adverbs(text):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    adverbs = [token.text for token in doc if token.pos_ == "ADV"]
+    return adverbs
