@@ -1,6 +1,7 @@
 import spacy
 import textstat
 import nltk
+import re
 import py3langid as langid
 from textblob import TextBlob
 from profanity_check import predict, predict_prob
@@ -525,3 +526,14 @@ def extract_word_meanings(text):
             synsets = wordnet.synsets(word)
             meanings = [synset.definition() for synset in synsets]
             print(f"{word}: {meanings}")
+
+
+# extract words and their respective frequencies from the text
+
+
+def count_words(text):
+    words = re.findall(r"\b\w+\b", text.lower())
+
+    word_counts = Counter(words)
+
+    return [(word, count) for word, count in word_counts.items()]
