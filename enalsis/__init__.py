@@ -479,7 +479,7 @@ def calculate_readability_metrics(text):
     }
 
 
-# perform paragraph based sentimental analysis
+# perform paragraph wise sentimental analysis
 
 
 def paragraph_sentiment_analysis(text):
@@ -489,6 +489,20 @@ def paragraph_sentiment_analysis(text):
     for paragraph in paragraphs:
         blob = TextBlob(paragraph)
         sentiment_score = blob.sentiment.polarity
+        sentiments.append(sentiment_score)
+
+    return sentiments
+
+
+# perform sentence wise sentimental analysis
+
+
+def sentence_sentiment_analysis(text):
+    blob = TextBlob(text)
+
+    sentiments = []
+    for sentence in blob.sentences:
+        sentiment_score = sentence.sentiment.polarity
         sentiments.append(sentiment_score)
 
     return sentiments
