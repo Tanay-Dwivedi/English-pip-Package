@@ -2,6 +2,12 @@ import spacy
 import py3langid as langid
 from textblob import TextBlob
 from profanity_check import predict, predict_prob
+from collections import Counter
+from sklearn.metrics.pairwise import cosine_similarity
+import nltk
+
+nltk.download("en_core_web_sm")
+nltk.download("en_core_web_md")
 
 # Extract entities from string
 
@@ -292,3 +298,68 @@ def profanity_analysis(text):
     is_profane = profanity_score >= threshold
 
     return is_profane, profanity_score, profanity_prob
+
+
+# Perform Sentiment Analysis on the text
+
+
+def analyze_sentiment(text):
+    blob = TextBlob(text)
+    sentiment_polarity = blob.sentiment.polarity
+
+    if sentiment_polarity > 0:
+        sentiment_label = "Positive"
+        sentiment_words = [
+            {
+                "word": word.lower(),
+                "score": blob.sentiment.polarity,
+                "frequency": count,
+            }
+            for word, count in Counter(
+                [
+                    word.lower()
+                    for word, score in blob.tags
+                    if score == "JJ" and blob.word_counts[word.lower()] > 1
+                ]
+            ).items()
+        ]
+    elif sentiment_polarity < 0:
+        sentiment_label = "Negative"
+        sentiment_words = [
+            {
+                "word": word.lower(),
+                "score": blob.sentiment.polarity,
+                "frequency": count,
+            }
+            for word, count in Counter(
+                [
+                    word.lower()
+                    for word, score in blob.tags
+                    if score == "JJ" and blob.word_counts[word.lower()] > 1
+                ]
+            ).items()
+        ]
+    else:
+        sentiment_label = "Neutral"
+        sentiment_words = [
+            {
+                "word": word.lower(),
+                "score": blob.sentiment.polarity,
+                "frequency": count,
+            }
+            for word, count in Counter(
+                [
+                    word.lower()
+                    for word, score in blob.tags
+                    if score == "NN" and blob.word_counts[word.lower()] > 1
+                ]
+            ).items()
+        ]
+
+    results = {
+        "sentiment_label": sentiment_label,
+        "sentiment_polarity": sentiment_polarity,
+        "sentiment_words": sentiment_words,
+    }
+
+    return results
