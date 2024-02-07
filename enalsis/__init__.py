@@ -5,6 +5,9 @@ from profanity_check import predict, predict_prob
 from collections import Counter
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
+from nltk.tokenize import sent_tokenize
+from nltk.corpus import stopwords
+from nltk.probability import FreqDist
 
 nltk.download("en_core_web_sm")
 nltk.download("en_core_web_md")
@@ -303,7 +306,7 @@ def profanity_analysis(text):
 # Perform Sentiment Analysis on the text
 
 
-def analyze_sentiment(text):
+def sentiment_analysis(text):
     blob = TextBlob(text)
     sentiment_polarity = blob.sentiment.polarity
 
@@ -380,3 +383,37 @@ def semantic_similarity(text1, text2):
     similarity_score = cosine_similarity(vec1, vec2)[0][0]
 
     return similarity_score
+
+
+# Extract Text summary:
+
+
+def text_summarization(text, num_lines):
+    sentences = sent_tokenize(text)
+
+    stop_words = set(stopwords.words("english"))
+    filtered_sentences = [
+        sentence for sentence in sentences if sentence.lower() not in stop_words
+    ]
+
+    words = [
+        word.lower()
+        for sentence in filtered_sentences
+        for word in nltk.word_tokenize(sentence)
+    ]
+
+    word_freq = FreqDist(words)
+
+    sentence_scores = {
+        sentence: sum(word_freq[word] for word in nltk.word_tokenize(sentence))
+        for sentence in filtered_sentences
+    }
+
+    num_sentences = min(num_lines, len(filtered_sentences))
+    top_sentences = sorted(
+        filtered_sentences, key=lambda x: sentence_scores[x], reverse=True
+    )[:num_sentences]
+
+    summary = " ".join(top_sentences)
+
+    return summary
