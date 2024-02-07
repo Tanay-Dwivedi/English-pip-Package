@@ -1,17 +1,20 @@
 import spacy
+import textstat
+import nltk
 import py3langid as langid
 from textblob import TextBlob
 from profanity_check import predict, predict_prob
 from collections import Counter
 from sklearn.metrics.pairwise import cosine_similarity
-import nltk
 from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
-import textstat
+from nltk.corpus import wordnet
+
 
 nltk.download("en_core_web_sm")
 nltk.download("en_core_web_md")
+nltk.download("wordnet")
 
 # Extract entities from string
 
@@ -506,3 +509,19 @@ def sentence_sentiment_analysis(text):
         sentiments.append(sentiment_score)
 
     return sentiments
+
+
+# extract words and their word meanings from the text
+
+
+def extract_word_meanings(text):
+    words = nltk.word_tokenize(text)
+
+    unique_words = set()
+
+    for word in words:
+        if word not in unique_words:
+            unique_words.add(word)
+            synsets = wordnet.synsets(word)
+            meanings = [synset.definition() for synset in synsets]
+            print(f"{word}: {meanings}")
