@@ -420,7 +420,7 @@ def text_summarization(text, num_lines):
     return summary
 
 
-# Readability Analysis
+# perform Readability Analysis
 
 
 def calculate_readability_metrics(text):
@@ -477,3 +477,18 @@ def calculate_readability_metrics(text):
         "Osman": osman,
         "Average Readability": average_readability,
     }
+
+
+# perform paragraph based sentimental analysis
+
+
+def paragraph_sentiment_analysis(text):
+    paragraphs = text.split("\n\n")
+
+    sentiments = []
+    for paragraph in paragraphs:
+        blob = TextBlob(paragraph)
+        sentiment_score = blob.sentiment.polarity
+        sentiments.append(sentiment_score)
+
+    return sentiments
