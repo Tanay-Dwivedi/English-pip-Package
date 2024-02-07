@@ -363,3 +363,20 @@ def analyze_sentiment(text):
     }
 
     return results
+
+
+# get the Semantic Similarity of Two Strings
+
+
+def semantic_similarity(text1, text2):
+
+    nlp = spacy.load("en_core_web_md")
+    tokens1 = nlp(text1)
+    tokens2 = nlp(text2)
+
+    vec1 = tokens1.vector.reshape(1, -1)
+    vec2 = tokens2.vector.reshape(1, -1)
+
+    similarity_score = cosine_similarity(vec1, vec2)[0][0]
+
+    return similarity_score
