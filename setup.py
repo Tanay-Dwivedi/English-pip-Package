@@ -12,7 +12,6 @@ setuptools.setup(
     author_email="tanaydwivedi2002@gmail.com",
     license="MIT",
     license_file="LICENSE",
-    readme="README.md",
     project_urls={
         "Documentation": "https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/README.md",
         "Source": "https://github.com/Tanay-Dwivedi/English-pip-Package",
@@ -25,14 +24,23 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Topic :: Scientific/Engineering :: Information Analysis",
+        "Topic :: Text Processing :: Linguistic",
+        "Operating System :: OS Independent",
+        "Environment :: Console",
         "Topic :: Utilities",
     ],
     python_requires=">= 3.12",
     install_requires=[
         "spacy",
-        "textblob",
+        "textstat",
+        "nltk",
+        "regex",
         "py3langid",
-    ],  # {will add the required dependencies or packages}
+        "textblob",
+        "profanity_check",
+        "scikit-learn",
+    ],
     packages=setuptools.find_packages(),
     include_package_data=True,
 )
