@@ -12,11 +12,6 @@ from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.corpus import wordnet
 
-
-nltk.download("en_core_web_sm")
-nltk.download("en_core_web_md")
-nltk.download("wordnet")
-
 # Extract entities from the text
 
 
@@ -223,7 +218,7 @@ def detect_language(text):
 # Perform syntax tree analysis on the given text
 
 
-def parse_syntax(text):
+def parse_syntax_tree(text):
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
