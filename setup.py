@@ -30,7 +30,7 @@ setuptools.setup(
         "Environment :: Console",
         "Topic :: Utilities",
     ],
-    python_requires=">= 3.12",
+    python_requires=">= 3.10",
     install_requires=[
         "spacy",
         "textstat",
@@ -38,7 +38,7 @@ setuptools.setup(
         "regex",
         "py3langid",
         "textblob",
-        "profanity_check",
+        "alt-profanity-check",
         "scikit-learn",
     ],
     packages=setuptools.find_packages(),
