@@ -17,7 +17,7 @@ nltk.download("en_core_web_sm")
 nltk.download("en_core_web_md")
 nltk.download("wordnet")
 
-# Extract entities from string
+# Extract entities from the text
 
 
 def get_entities(text):
@@ -27,7 +27,7 @@ def get_entities(text):
     return entities
 
 
-# Extract sentences from a string
+# Extract sentences from the text
 
 
 def get_sentences(text):
@@ -37,7 +37,7 @@ def get_sentences(text):
     return sentences
 
 
-# Extract adjectives from the string
+# Extract adjectives from the text
 
 
 def get_adjectives(text):
@@ -47,7 +47,7 @@ def get_adjectives(text):
     return adjectives
 
 
-# Extract adverbs from the string
+# Extract adverbs from the text
 
 
 def get_adverbs(text):
@@ -57,7 +57,7 @@ def get_adverbs(text):
     return adverbs
 
 
-# Extract nouns from the string
+# Extract nouns from the text
 
 
 def get_nouns(text):
@@ -67,7 +67,7 @@ def get_nouns(text):
     return nouns
 
 
-# Extract pronouns from the string
+# Extract pronouns from the text
 
 
 def get_pronouns(text):
@@ -77,7 +77,7 @@ def get_pronouns(text):
     return pronouns
 
 
-# Extract proper nouns from the string
+# Extract proper nouns from the text
 
 
 def get_proper_nouns(text):
@@ -87,7 +87,7 @@ def get_proper_nouns(text):
     return proper_nouns
 
 
-# Extract verbs from the string
+# Extract verbs from the text
 
 
 def get_verbs(text):
@@ -97,7 +97,7 @@ def get_verbs(text):
     return verbs
 
 
-# Extract numbers from the string
+# Extract numbers from the text
 
 
 def get_numbers(text):
@@ -220,7 +220,7 @@ def detect_language(text):
         return "Unable to detect language"
 
 
-# Parse the given text
+# Perform syntax tree analysis on the given text
 
 
 def parse_syntax(text):
@@ -276,7 +276,7 @@ def spell_check_text(text):
     return misspelled_words, corrected_text
 
 
-# find misspelled words and its respective corrected words
+# Find misspelled words and its respective corrected words
 
 
 def find_spell_corrections(text):
@@ -295,7 +295,7 @@ def find_spell_corrections(text):
     return misspelled_dict
 
 
-# perform the Profanity and Obscene Language Analysis on the text
+# Perform the Profanity and Obscene Language Analysis on the text
 
 
 def profanity_analysis(text):
@@ -373,7 +373,7 @@ def sentiment_analysis(text):
     return results
 
 
-# get the Semantic Similarity of Two Strings
+# Get the Semantic Similarity between the two texts
 
 
 def semantic_similarity(text1, text2):
@@ -390,7 +390,7 @@ def semantic_similarity(text1, text2):
     return similarity_score
 
 
-# Extract Text summary:
+# Extract the text summary
 
 
 def text_summarization(text, num_lines):
@@ -424,7 +424,7 @@ def text_summarization(text, num_lines):
     return summary
 
 
-# perform Readability Analysis
+# Perform Readability Analysis on the text
 
 
 def calculate_readability_metrics(text):
@@ -483,7 +483,7 @@ def calculate_readability_metrics(text):
     }
 
 
-# perform paragraph wise sentimental analysis
+# Perform paragraph wise sentimental analysis on the text
 
 
 def paragraph_sentiment_analysis(text):
@@ -498,7 +498,7 @@ def paragraph_sentiment_analysis(text):
     return sentiments
 
 
-# perform sentence wise sentimental analysis
+# Perform sentence wise sentimental analysis on the text
 
 
 def sentence_sentiment_analysis(text):
@@ -512,7 +512,7 @@ def sentence_sentiment_analysis(text):
     return sentiments
 
 
-# extract words and their word meanings from the text
+# Extract words and their word meanings from the text
 
 
 def extract_word_meanings(text):
@@ -528,7 +528,7 @@ def extract_word_meanings(text):
             print(f"{word}: {meanings}")
 
 
-# extract words and their respective frequencies from the text
+# Extract words and their respective frequencies from the text
 
 
 def count_words(text):
@@ -537,3 +537,25 @@ def count_words(text):
     word_counts = Counter(words)
 
     return [(word, count) for word, count in word_counts.items()]
+
+
+# Extract numerical and alphabetical percentage from the text
+
+
+def calculate_alphabetical_and_numberical_percentages(text):
+    total_characters = len(text)
+
+    text_characters = sum(c.isalpha() for c in text)
+    numeric_characters = sum(c.isdigit() for c in text)
+    whitespace_characters = sum(c.isspace() for c in text)
+
+    text_percentage = (text_characters / total_characters) * 100
+    number_percentage = (numeric_characters / total_characters) * 100
+    whitespace_percentage = (whitespace_characters / total_characters) * 100
+
+    total_percentage = text_percentage + number_percentage + whitespace_percentage
+    if total_percentage != 100:
+        adjustment = 100 - total_percentage
+        text_percentage += adjustment
+
+    return text_percentage, number_percentage, whitespace_percentage
