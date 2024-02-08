@@ -12,10 +12,20 @@ from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.corpus import wordnet
 
+
 # Extract entities from the text
 
 
 def get_entities(text):
+    """
+    Extracts entities from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of tuples containing the text and label of each entity.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     entities = [(ent.text, ent.label_) for ent in doc.ents]
@@ -26,6 +36,15 @@ def get_entities(text):
 
 
 def get_sentences(text):
+    """
+    Extracts sentences from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of sentences extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     sentences = [sent.text for sent in doc.sents]
@@ -36,6 +55,15 @@ def get_sentences(text):
 
 
 def get_adjectives(text):
+    """
+    Extracts adjectives from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of adjectives extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     adjectives = [token.text for token in doc if token.pos_ == "ADJ"]
@@ -46,6 +74,15 @@ def get_adjectives(text):
 
 
 def get_adverbs(text):
+    """
+    Extracts adverbs from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of adverbs extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     adverbs = [token.text for token in doc if token.pos_ == "ADV"]
@@ -56,6 +93,15 @@ def get_adverbs(text):
 
 
 def get_nouns(text):
+    """
+    Extracts nouns from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of nouns extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     nouns = [token.text for token in doc if token.pos_ == "NOUN"]
@@ -66,6 +112,15 @@ def get_nouns(text):
 
 
 def get_pronouns(text):
+    """
+    Extracts pronouns from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of pronouns extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     pronouns = [token.text for token in doc if token.pos_ == "PRON"]
@@ -76,6 +131,15 @@ def get_pronouns(text):
 
 
 def get_proper_nouns(text):
+    """
+    Extracts proper nouns from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of proper nouns extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     proper_nouns = [token.text for token in doc if token.pos_ == "PROPN"]
@@ -86,6 +150,15 @@ def get_proper_nouns(text):
 
 
 def get_verbs(text):
+    """
+    Extracts verbs from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of verbs extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     verbs = [token.text for token in doc if token.pos_ == "VERB"]
@@ -96,6 +169,15 @@ def get_verbs(text):
 
 
 def get_numbers(text):
+    """
+    Extracts numbers from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of numbers extracted from the input text.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     numbers = [token.text for token in doc if token.pos_ == "NUM"]
@@ -106,6 +188,15 @@ def get_numbers(text):
 
 
 def detect_language(text):
+    """
+    Detects the language of the given text using langid.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        str: The name of the detected language, or "Unknown Language" if the language cannot be detected.
+    """
     try:
         language_code, _ = langid.classify(text)
 
@@ -219,6 +310,16 @@ def detect_language(text):
 
 
 def parse_syntax_tree(text):
+    """
+    Performs syntax tree analysis on the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of dictionaries containing information about each token in the text,
+              including its text, dependency relation, part-of-speech tag, and head token.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
@@ -238,6 +339,16 @@ def parse_syntax_tree(text):
 
 
 def get_POS_tag(text):
+    """
+    Extracts part-of-speech (POS) tags from the given text using spaCy.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of dictionaries containing information about each word/token in the text,
+              including the word/token itself and its corresponding part-of-speech tag.
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
@@ -252,10 +363,21 @@ def get_POS_tag(text):
     return pos_list
 
 
-# Extract missspelled words and the corrected text
+# Extract misspelled words and the corrected text
 
 
 def spell_check_text(text):
+    """
+    Performs spell checking on the given text using TextBlob.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        tuple: A tuple containing two elements:
+               - A list of misspelled words extracted from the input text.
+               - The corrected version of the input text.
+    """
     blob = TextBlob(text)
 
     corrected_text = str(blob.correct())
@@ -275,6 +397,15 @@ def spell_check_text(text):
 
 
 def find_spell_corrections(text):
+    """
+    Finds misspelled words and their respective corrected words using TextBlob.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        dict: A dictionary where keys are misspelled words and values are their respective corrected words.
+    """
     blob = TextBlob(text)
 
     corrected_text = str(blob.correct())
@@ -294,6 +425,18 @@ def find_spell_corrections(text):
 
 
 def profanity_analysis(text):
+    """
+    Performs profanity and obscene language analysis on the given text using the Profanity Check library.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        tuple: A tuple containing three elements:
+               - A boolean indicating whether the text contains profanity or obscene language.
+               - The profanity score, indicating the degree of profanity present in the text.
+               - The probability of the text containing profanity or obscene language.
+    """
     profanity_score = predict([text])[0]
     profanity_prob = predict_prob([text])[0]
 
@@ -307,57 +450,42 @@ def profanity_analysis(text):
 
 
 def sentiment_analysis(text):
+    """
+    Performs sentiment analysis on the given text using TextBlob.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        dict: A dictionary containing sentiment analysis results, including:
+              - The sentiment label indicating whether the text is Positive, Negative, or Neutral.
+              - The sentiment polarity score indicating the overall sentiment polarity of the text.
+              - A list of sentiment words along with their scores and frequencies.
+    """
     blob = TextBlob(text)
     sentiment_polarity = blob.sentiment.polarity
 
     if sentiment_polarity > 0:
         sentiment_label = "Positive"
-        sentiment_words = [
-            {
-                "word": word.lower(),
-                "score": blob.sentiment.polarity,
-                "frequency": count,
-            }
-            for word, count in Counter(
-                [
-                    word.lower()
-                    for word, score in blob.tags
-                    if score == "JJ" and blob.word_counts[word.lower()] > 1
-                ]
-            ).items()
-        ]
     elif sentiment_polarity < 0:
         sentiment_label = "Negative"
-        sentiment_words = [
-            {
-                "word": word.lower(),
-                "score": blob.sentiment.polarity,
-                "frequency": count,
-            }
-            for word, count in Counter(
-                [
-                    word.lower()
-                    for word, score in blob.tags
-                    if score == "JJ" and blob.word_counts[word.lower()] > 1
-                ]
-            ).items()
-        ]
     else:
         sentiment_label = "Neutral"
-        sentiment_words = [
-            {
-                "word": word.lower(),
-                "score": blob.sentiment.polarity,
-                "frequency": count,
-            }
-            for word, count in Counter(
-                [
-                    word.lower()
-                    for word, score in blob.tags
-                    if score == "NN" and blob.word_counts[word.lower()] > 1
-                ]
-            ).items()
-        ]
+
+    sentiment_words = [
+        {
+            "word": word.lower(),
+            "score": blob.sentiment.polarity,
+            "frequency": count,
+        }
+        for word, count in Counter(
+            [
+                word.lower()
+                for word, score in blob.tags
+                if score == "JJ" and blob.word_counts[word.lower()] > 1
+            ]
+        ).items()
+    ]
 
     results = {
         "sentiment_label": sentiment_label,
@@ -372,7 +500,16 @@ def sentiment_analysis(text):
 
 
 def semantic_similarity(text1, text2):
+    """
+    Calculates the semantic similarity between two texts using spaCy's pre-trained word embeddings.
 
+    Parameters:
+        text1 (str): The first input text.
+        text2 (str): The second input text.
+
+    Returns:
+        float: The semantic similarity score between the two texts.
+    """
     nlp = spacy.load("en_core_web_md")
     tokens1 = nlp(text1)
     tokens2 = nlp(text2)
@@ -389,6 +526,16 @@ def semantic_similarity(text1, text2):
 
 
 def text_summarization(text, num_lines):
+    """
+    Generates a summary of the given text by extracting the most relevant sentences.
+
+    Parameters:
+        text (str): The input text.
+        num_lines (int): The number of sentences to include in the summary.
+
+    Returns:
+        str: The summary of the input text.
+    """
     sentences = sent_tokenize(text)
 
     stop_words = set(stopwords.words("english"))
@@ -423,6 +570,15 @@ def text_summarization(text, num_lines):
 
 
 def calculate_readability_metrics(text):
+    """
+    Calculates various readability metrics for the given text using the textstat library.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        dict: A dictionary containing readability metrics calculated for the input text.
+    """
     flesch_reading_ease = textstat.flesch_reading_ease(text)
     flesch_kincaid_grade = textstat.flesch_kincaid_grade(text)
     smog_index = textstat.smog_index(text)
@@ -478,10 +634,19 @@ def calculate_readability_metrics(text):
     }
 
 
-# Perform paragraph wise sentimental analysis on the text
+# Perform paragraph-wise sentiment analysis on the text
 
 
 def paragraph_sentiment_analysis(text):
+    """
+    Performs sentiment analysis on each paragraph of the given text using TextBlob.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list containing sentiment scores for each paragraph.
+    """
     paragraphs = text.split("\n\n")
 
     sentiments = []
@@ -493,10 +658,19 @@ def paragraph_sentiment_analysis(text):
     return sentiments
 
 
-# Perform sentence wise sentimental analysis on the text
+# Perform sentence-wise sentiment analysis on the text
 
 
 def sentence_sentiment_analysis(text):
+    """
+    Performs sentiment analysis on each sentence of the given text using TextBlob.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list containing sentiment scores for each sentence.
+    """
     blob = TextBlob(text)
 
     sentiments = []
@@ -511,22 +685,43 @@ def sentence_sentiment_analysis(text):
 
 
 def extract_word_meanings(text):
+    """
+    Extracts unique words from the given text and their corresponding word meanings using WordNet.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list containing dictionaries where each dictionary represents a word along with its meanings.
+    """
     words = nltk.word_tokenize(text)
 
     unique_words = set()
+    word_meanings = []
 
     for word in words:
         if word not in unique_words:
             unique_words.add(word)
             synsets = wordnet.synsets(word)
             meanings = [synset.definition() for synset in synsets]
-            print(f"{word}: {meanings}")
+            word_meanings.append({"word": word, "meanings": meanings})
+
+    return word_meanings
 
 
 # Extract words and their respective frequencies from the text
 
 
 def count_words(text):
+    """
+    Counts the frequencies of words in the given text.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        list: A list of tuples where each tuple contains a word and its frequency.
+    """
     words = re.findall(r"\b\w+\b", text.lower())
 
     word_counts = Counter(words)
@@ -534,10 +729,22 @@ def count_words(text):
     return [(word, count) for word, count in word_counts.items()]
 
 
-# Extract numerical and alphabetical percentage from the text
+# Extract alphabetical and numerical percentage from the text
 
 
 def calculate_alphabetical_and_numberical_percentages(text):
+    """
+    Calculates the percentages of alphabetical, numerical, and whitespace characters in the given text.
+
+    Parameters:
+        text (str): The input text.
+
+    Returns:
+        tuple: A tuple containing three percentages:
+               - The percentage of alphabetical characters.
+               - The percentage of numerical characters.
+               - The percentage of whitespace characters.
+    """
     total_characters = len(text)
 
     text_characters = sum(c.isalpha() for c in text)
