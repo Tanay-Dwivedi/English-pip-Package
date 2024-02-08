@@ -2,9 +2,9 @@
 
 **First off, thanks for taking the time to contribute!**
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 
+All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions.
 
-> And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which I would also be very happy about:
+> If you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which I would also be very happy about:
 > - Star the project
 > - Tweet about it
 > - Refer this project in your project's readme
@@ -25,6 +25,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 - [Suggesting Enhancements](https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/.github/ISSUE_TEMPLATE/feature_request.md)
 - [Improving The Documentation](https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/README.md)
 - [Commit Messages](#commit-messages)
+- [Legal Notice](#legal-notice)
 
 -----
 
@@ -53,5 +54,10 @@ Thank you for adhering to this policy
 - Update the [README](https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/README.md) with details of changes to the interface, this includes new environment variables, useful file locations and container parameters.
 - Increase the version numbers in the [CHANGELOG](https://github.com/Tanay-Dwivedi/English-pip-Package/blob/master/CHANGELOG.md) and the README to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](https://semver.org).
 - After successfully doing the changes and you can create a pull request which I will merge after revewing
+
+-----
+
+> ## Legal Notice 
+> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 
 -----
