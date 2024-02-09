@@ -4,12 +4,13 @@
 ## Table of contents:
 
 1. [Documentation](https://enalsis-docs.vercel.app)
-2. [Aim](#aim)
-3. [Advantages](#advantages)
-4. [Disadvantages & Limitations](#disadvantages--limitations)
-5. [Future Improvements](#future-improvements)
-6. [Installation Instructions](#installation-instructions)
-7. [Important files](#important-files)
+2. [Usage](#usage)
+3. [Aim](#aim)
+4. [Advantages](#advantages)
+5. [Disadvantages & Limitations](#disadvantages--limitations)
+6. [Future Improvements](#future-improvements)
+7. [Installation Instructions](#installation-instructions)
+8. [Important files](#important-files)
 
 -----
 
@@ -17,6 +18,36 @@
 
 Access comprehensive documentation for detailed information on using and integrating our package.
 Access detailed information, helpful tips, and troubleshooting guidance by referring to our documentation on our  [Website](https://enalsis-docs.vercel.app).
+
+-----
+
+## Usage:
+
+To utilize the "enalsis" package in your Python programs, follow these simple steps:
+
+1. **Installation**: Begin by installing the "enalsis" package. You can do this using pip, the Python package manager, by running the following command in your terminal or command prompt:
+   ```bash
+   pip install enalsis
+   ```
+
+2. **Importing the Package**: Once installed, import the "enalsis" package into your Python script using the `import` statement:
+   ```python
+   import enalsis
+   ```
+
+3. **Accessing and Utilizing Functions**: Once the package is imported, you can directly call its functions using dot notation. Provide the required arguments to the function as per its documentation. For example, to use the `get_entities` function to extract entities from text, you would call it like this:
+   ```python
+   entities = enalsis.get_entities(text)
+   ```
+
+4. **Exploring Documentation**: For detailed information on each function and its parameters, refer to the package documentation. You can access the documentation online or directly from your Python environment using the `help` function:
+   ```python
+   help(enalsis)
+   ```
+
+5. **Further Assistance**: If you encounter any issues or require assistance while using the "enalsis" package, refer to the package's documentation for troubleshooting tips and additional resources. You can also reach out to the package maintainers for support via [mail](tanaydwivedi2002@gmail.com).
+
+By following these steps, you can seamlessly integrate the "enalsis" package into your Python programs and leverage its powerful functionalities for text analysis and exploration.
 
 -----
 
